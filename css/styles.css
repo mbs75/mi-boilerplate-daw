@@ -1,0 +1,307 @@
+/* ==========================================================================
+   1. RESET PERSONALIZADO & VARIABLES GLOBALES (:root)
+   ========================================================================== */
+
+:root {
+    /* Paleta de Colores (Inspiración Apple) */
+    --color-bg-main: #F5F5F7;
+    --color-bg-card: #FFFFFF;
+    --color-text-primary: #1D1D1F;
+    --color-text-secondary: #6E6E73;
+    --color-accent: #0066CC;
+    --color-accent-hover: #004499;
+    --color-footer-bg: #111111;
+    --color-border: #E5E5E8;
+
+    /* Fuentes */
+    --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* Unidades Absolutas para Estructura General */
+    --min-width-layout: 1000px;
+    --max-width-layout: 2000px;
+    --border-radius-card: 12px;
+
+    /* Transiciones */
+    --transition-fast: 0.3s ease;
+}
+
+/* Reset complementario a Normalize */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base para rem */
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-bg-main);
+    color: var(--color-text-primary);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   2. CONTENEDOR PRINCIPAL (LÍMITES 1000px - 2000px)
+   ========================================================================== */
+
+.page-wrapper {
+    width: 92%;
+    min-width: var(--min-width-layout);
+    max-width: var(--max-width-layout);
+    margin: 2rem auto;
+    display: flex;
+    gap: 2rem;
+}
+
+/* ==========================================================================
+   3. CABECERA Y MENÚ CON INTERACCIONES
+   ========================================================================== */
+
+.header {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    width: 92%;
+    min-width: var(--min-width-layout);
+    max-width: var(--max-width-layout);
+    margin: 0 auto;
+    height: 70px; /* Unidad absoluta */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.35rem; /* Unidad relativa */
+    font-weight: 700;
+    color: var(--color-text-primary);
+    text-decoration: none;
+}
+
+.logo i {
+    color: var(--color-accent);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 0.5rem 1rem; /* Unidades relativas */
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: all var(--transition-fast);
+}
+
+.nav-link:hover, 
+.nav-link.active {
+    color: var(--color-accent);
+    background-color: rgba(0, 102, 204, 0.08);
+}
+
+/* ==========================================================================
+   4. ESTRUCTURA CON FLEXBOX (MAIN + ASIDE)
+   ========================================================================== */
+
+.main-content {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.hero-section {
+    background-color: var(--color-bg-card);
+    padding: 3rem 2rem;
+    border-radius: var(--border-radius-card);
+    border: 1px solid var(--color-border);
+}
+
+.hero-section h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.hero-section p {
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Rejilla de tarjetas con Flexbox */
+.articles-grid {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: var(--color-bg-card);
+    border-radius: var(--border-radius-card);
+    border: 1px solid var(--color-border);
+    flex: 1 1 calc(33.333% - 1.5rem);
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform var(--transition-fast);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card-img {
+    width: 100%;
+    height: 180px; /* Unidad absoluta */
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-body h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-body p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.btn-more {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color var(--transition-fast);
+}
+
+.btn-more:hover {
+    color: var(--color-accent-hover);
+}
+
+.widget {
+    background: var(--color-bg-card);
+    padding: 1.25rem;
+    border-radius: var(--border-radius-card);
+    border: 1px solid var(--color-border);
+}
+
+.widget h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.widget ul {
+    list-style: none;
+}
+
+.widget ul li {
+    margin-bottom: 0.5rem;
+}
+
+.widget a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   5. PIE DE PÁGINA (FOOTER)
+   ========================================================================== */
+
+.footer {
+    background-color: var(--color-footer-bg);
+    color: #FFFFFF;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.footer-container {
+    width: 92%;
+    min-width: var(--min-width-layout);
+    max-width: var(--max-width-layout);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: background-color var(--transition-fast);
+}
+
+.social-icon:hover {
+    background-color: var(--color-accent);
+}
+
+/* ==========================================================================
+   6. ELEMENTO CON POSITION FIXED (BOTÓN INFERIOR DERECHO)
+   ========================================================================== */
+
+.fixed-action-btn {
+    position: fixed;
+    bottom: 25px; /* Unidad absoluta */
+    right: 25px;  /* Unidad absoluta */
+    width: 48px;
+    height: 48px;
+    background-color: var(--color-accent);
+    color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    z-index: 2000;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.fixed-action-btn:hover {
+    background-color: var(--color-accent-hover);
+    transform: scale(1.1);
+}
